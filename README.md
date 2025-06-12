@@ -1,129 +1,48 @@
-🎮 Tetris Android Game with Music 🎵
-Welcome to Tetris Android, a classic Tetris game built from scratch in Java using Android Studio!
-Enjoy addictive gameplay, catchy music, and a scoring system to challenge your friends! 🚀
+🎮 TetriX: Block Drop Beats 🎵
+[![Platform](https://img.shields.io/badge/platforma](https://img.shields.io/badge/language-java-blue.svg: MIT](https://img.shields.io/badge/license-MIT-yellow.svg TetriX: Block Drop Beats – a vibrant, modern Tetris game for Android, built from scratch in Java!
+Enjoy classic gameplay, catchy music, colorful visuals, and challenge your friends for the high score! 🚀
 
-🖼️ Screenshots
-<img src="screenshots/gameplay.png" width="300"> <img src="screenshots/menu.png" width="300">
-
+🖼️ Preview
+<p align="center"> <img src="screenshots/gameplay.png" width="250" alt="Gameplay Screenshot"> <img src="screenshots/menu.png" width="250" alt="Menu Screenshot"> </p>
 ✨ Features
-🎲 Classic Tetris mechanics
+🎲 Classic Tetris Mechanics – Authentic falling blocks and line-clearing fun!
 
-🎶 Background music & sound effects
+🎶 Dynamic Music & SFX – Play with the iconic Tetris theme and satisfying sound effects.
 
-🏆 High score tracking
+🏆 High Score System – Track your best scores and aim for the top!
 
-🕹️ Touch & button controls
+🕹️ Touch & Button Controls – Play your way, on any device.
 
-🌈 Colorful, responsive UI
+🌈 Colorful, Responsive UI – Clean, modern visuals and smooth animations.
+
+💤 Pause & Resume – Take a break and jump back in anytime.
+
+📱 Optimized for All Screens – Enjoy on phones and tablets.
 
 🚀 Getting Started
-Prerequisites
-Android Studio (latest version recommended)
+🛠️ Prerequisites
+Android Studio (latest recommended)
 
 Java 8 or higher
 
 Android device or emulator
 
-Installation
-Clone the repository
-
+📦 Installation
 bash
 git clone https://github.com/yourusername/tetris-android.git
 cd tetris-android
-Open in Android Studio
+Open the project in Android Studio.
 
-Build & Run on your device or emulator
+Build & Run on your device or emulator.
 
-🛠️ Step-by-Step Development Guide
-1. Initialize Android Studio Project
-Create a new Android project (Empty Activity)
 
-Language: Java
-
-Minimum SDK: API 21+
-
-Commit:
-chore: initialize Android Studio project with Java
-
-2. Design Game Layout
-Create the main game layout (activity_main.xml)
-
-Add a custom GameView for drawing Tetris grid and pieces
-
-Commit:
-feat(ui): add main layout and custom GameView for Tetris grid
-
-3. Implement Game Logic
-Create classes for Tetromino pieces and grid logic
-
-Handle piece movement, rotation, and collision
-
-Commit:
-feat(gameplay): implement Tetromino classes and grid logic
-
-4. Add Game Loop
-Use a Handler or Timer for game updates
-
-Implement piece falling and user input
-
-Commit:
-feat(gameplay): add game loop and handle piece falling
-
-5. Implement Controls
-Add on-screen buttons (left, right, rotate, drop)
-
-Implement touch controls
-
-Commit:
-feat(controls): add on-screen controls for piece movement
-
-6. Add Scoring System
-Track and display current score and high score
-
-Save high score using SharedPreferences
-
-Commit:
-feat(score): implement scoring and high score saving
-
-7. Integrate Music and Sound Effects
-Add background music (e.g., classic Tetris theme)
-
-Play sound effects on line clear and game over
-
-Commit:
-feat(audio): add background music and sound effects
-
-8. Polish UI
-Add start, pause, and game over screens
-
-Style buttons and backgrounds
-
-Commit:
-style(ui): polish UI with menus and improved visuals
-
-9. Test and Debug
-Test on multiple devices
-
-Fix bugs and optimize performance
-
-Commit:
-fix: bug fixes and performance improvements
-
-10. Prepare for Release
-Update app icon and splash screen
-
-Write documentation and add screenshots
-
-Commit:
-docs: update README and add project screenshots
-
-📦 Folder Structure
+🗂️ Project Structure
 text
 tetris-android/
 ├── app/
 │   ├── src/
 │   │   ├── main/
-│   │   │   ├── java/com/yourusername/tetris/
+│   │   │   ├── java/es/nellagames/tetris/
 │   │   │   ├── res/
 │   │   │   │   ├── layout/
 │   │   │   │   ├── drawable/
@@ -134,13 +53,25 @@ tetris-android/
 ├── screenshots/
 ├── README.md
 └── LICENSE
-🙌 Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+🤝 Contributing
+Contributions are welcome!
+If you have ideas for new features or improvements, please open an issue or submit a pull request.
 
 📄 License
-MIT
+This project is licensed under the MIT License.
 
-💡 Credits
-Inspired by the original Tetris by Alexey Pajitnov
+🙏 Credits
+Original Tetris by Alexey Pajitnov
 
 Music: Tetris Theme (Korobeiniki)
+
+Built with ❤️ using Java & Android Studio
+
+🚩 Let's Play!
+Ready to drop some blocks and set a new high score?
+Clone, build, and play TetriX: Block Drop Beats now! 🎉
+
+“The only limit to your score is your skill. Good luck!” 🏆
+
+Tip:
+You can further personalize this README by adding GIFs, more badges, or links to demo videos!
