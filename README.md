@@ -1,77 +1,105 @@
-🎮 TetriX: Block Drop Beats 🎵
-[![Platform](https://img.shields.io/badge/platforma](https://img.shields.io/badge/language-java-blue.svg: MIT](https://img.shields.io/badge/license-MIT-yellow.svg TetriX: Block Drop Beats – a vibrant, modern Tetris game for Android, built from scratch in Java!
+text
+# 🎮 TetriX: Block Drop Beats 🎵
+
+[![Platform](https://img.shields.io/badge/platform-Android-green.svg)](https://developer.android.com)
+[![Language](https://img.shields.io/badge/language-Java-blue.svg)](https://www.java.com)
+[![License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
+
+**TetriX: Block Drop Beats** – a vibrant, modern Tetris game for Android, built from scratch in Java!  
 Enjoy classic gameplay, catchy music, colorful visuals, and challenge your friends for the high score! 🚀
 
-🖼️ Preview
-<p align="center"> <img src="screenshots/gameplay.png" width="250" alt="Gameplay Screenshot"> <img src="screenshots/menu.png" width="250" alt="Menu Screenshot"> </p>
-✨ Features
-🎲 Classic Tetris Mechanics – Authentic falling blocks and line-clearing fun!
+---
 
-🎶 Dynamic Music & SFX – Play with the iconic Tetris theme and satisfying sound effects.
+## 🖼️ Preview
 
-🏆 High Score System – Track your best scores and aim for the top!
+<p align="center">
+  <img src="screenshots/gameplay.png" width="250" alt="Gameplay Screenshot">
+  <img src="screenshots/menu.png" width="250" alt="Menu Screenshot">
+</p>
 
-🕹️ Touch & Button Controls – Play your way, on any device.
+---
 
-🌈 Colorful, Responsive UI – Clean, modern visuals and smooth animations.
+## ✨ Features
 
-💤 Pause & Resume – Take a break and jump back in anytime.
+- 🎲 **Classic Tetris Mechanics** – Authentic falling blocks and line-clearing fun!
+- 🎶 **Dynamic Music & SFX** – Play with the iconic Tetris theme and satisfying sound effects.
+- 🏆 **High Score System** – Track your best scores and aim for the top!
+- 🕹️ **Touch & Button Controls** – Play your way, on any device.
+- 🌈 **Colorful, Responsive UI** – Clean, modern visuals and smooth animations.
+- 💤 **Pause & Resume** – Take a break and jump back in anytime.
+- 📱 **Optimized for All Screens** – Enjoy on phones and tablets.
 
-📱 Optimized for All Screens – Enjoy on phones and tablets.
+---
 
-🚀 Getting Started
-🛠️ Prerequisites
-Android Studio (latest recommended)
+## 🚀 Getting Started
 
-Java 8 or higher
+### 🛠️ Prerequisites
 
-Android device or emulator
+- [Android Studio](https://developer.android.com/studio) (latest recommended)
+- Java 8 or higher
+- Android device or emulator
 
-📦 Installation
-bash
+### 📦 Installation
+
 git clone https://github.com/yourusername/tetris-android.git
 cd tetris-android
-Open the project in Android Studio.
 
-Build & Run on your device or emulator.
-
-
-🗂️ Project Structure
 text
+1. Open the project in Android Studio.
+2. Build & Run on your device or emulator.
+
+---
+
+## 🗂️ Project Structure
+
 tetris-android/
 ├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/es/nellagames/tetris/
-│   │   │   ├── res/
-│   │   │   │   ├── layout/
-│   │   │   │   ├── drawable/
-│   │   │   │   ├── values/
-│   │   │   │   └── raw/
-│   │   │   └── AndroidManifest.xml
-│   └── build.gradle
+│ ├── src/
+│ │ ├── main/
+│ │ │ ├── java/es/nellagames/tetris/
+│ │ │ ├── res/
+│ │ │ │ ├── layout/
+│ │ │ │ ├── drawable/
+│ │ │ │ ├── values/
+│ │ │ │ └── raw/
+│ │ │ └── AndroidManifest.xml
+│ └── build.gradle
 ├── screenshots/
 ├── README.md
 └── LICENSE
-🤝 Contributing
-Contributions are welcome!
-If you have ideas for new features or improvements, please open an issue or submit a pull request.
 
-📄 License
-This project is licensed under the MIT License.
+text
 
-🙏 Credits
-Original Tetris by Alexey Pajitnov
+---
 
-Music: Tetris Theme (Korobeiniki)
+## 🤝 Contributing
 
-Built with ❤️ using Java & Android Studio
+Contributions are welcome!  
+If you have ideas for new features or improvements, please [open an issue](https://github.com/yourusername/tetris-android/issues) or submit a pull request.
 
-🚩 Let's Play!
-Ready to drop some blocks and set a new high score?
-Clone, build, and play TetriX: Block Drop Beats now! 🎉
+---
 
-“The only limit to your score is your skill. Good luck!” 🏆
+## 📄 License
 
-Tip:
-You can further personalize this README by adding GIFs, more badges, or links to demo videos!
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🙏 Credits
+
+- **Original Tetris** by Alexey Pajitnov
+- **Music:** Tetris Theme (Korobeiniki)
+- Built with ❤️ using Java & Android Studio
+
+---
+
+## 🚩 Let's Play!
+
+Ready to drop some blocks and set a new high score?  
+Clone, build, and play **TetriX: Block Drop Beats** now! 🎉
+
+> _“The only limit to your score is your skill. Good luck!”_ 🏆
+
+---
+
+*Tip: You can further personalize this README by adding GIFs, more badges, or links to demo videos!*
