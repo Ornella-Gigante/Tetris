@@ -12,10 +12,10 @@ Enjoy classic gameplay, catchy music, colorful visuals, and challenge your frien
 
 ## 🖼️ Preview
 
-<p align="center">
-  <img src="screenshots/gameplay.png" width="250" alt="Gameplay Screenshot">
-  <img src="screenshots/menu.png" width="250" alt="Menu Screenshot">
-</p>
+    <p align="center">
+      <img src="screenshots/gameplay.png" width="250" alt="Gameplay Screenshot">
+      <img src="screenshots/menu.png" width="250" alt="Menu Screenshot">
+    </p>
 
 ---
 
@@ -68,7 +68,7 @@ text
       ├── README.md
       └── LICENSE
 
-text
+
 
 ---
 
