@@ -13,8 +13,8 @@ Enjoy classic gameplay, catchy music, colorful visuals, and challenge your frien
 ## 🖼️ Preview
 
  <p align="center">
-      <img src="screenshots/gameplay.png" width="250" alt="Gameplay Screenshot">
-      <img src="screenshots/menu.png" width="250" alt="Menu Screenshot">
+      <img src="https://github.com/Ornella-Gigante/tetris/blob/main/demo_image.png" width="250" alt="Gameplay Screenshot">
+    
   </p>
 
 ---
@@ -103,4 +103,3 @@ Clone, build, and play **TetriX: Block Drop Beats** now! 🎉
 
 ---
 
-*Tip: You can further personalize this README by adding GIFs, more badges, or links to demo videos!*
