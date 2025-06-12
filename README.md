@@ -12,10 +12,10 @@ Enjoy classic gameplay, catchy music, colorful visuals, and challenge your frien
 
 ## 🖼️ Preview
 
-    <p align="center">
+ <p align="center">
       <img src="screenshots/gameplay.png" width="250" alt="Gameplay Screenshot">
       <img src="screenshots/menu.png" width="250" alt="Menu Screenshot">
-    </p>
+  </p>
 
 ---
 
@@ -41,12 +41,12 @@ Enjoy classic gameplay, catchy music, colorful visuals, and challenge your frien
 
 ### 📦 Installation
 
-git clone https://github.com/yourusername/tetris-android.git
-cd tetris-android
-
-text
-1. Open the project in Android Studio.
-2. Build & Run on your device or emulator.
+        git clone https://github.com/yourusername/tetris-android.git
+        cd tetris-android
+        
+        text
+        1. Open the project in Android Studio.
+        2. Build & Run on your device or emulator.
 
 ---
 
