@@ -1,13 +1,15 @@
-<div align="center">
 
 # 🎮 TetriX: Block Drop Beats 🎵
+
+## **TetriX: Block Drop Beats** – a vibrant, modern Tetris game for Android, built from scratch in Java!  
+Enjoy classic gameplay, catchy music, colorful visuals, and challenge your friends for the high score! 🚀
+
+<div align="center">
 
 [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](https://developer.android.com)
 [![Language](https://img.shields.io/badge/language-Java-blue.svg)](https://www.java.com)
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
-**TetriX: Block Drop Beats** – a vibrant, modern Tetris game for Android, built from scratch in Java!  
-Enjoy classic gameplay, catchy music, colorful visuals, and challenge your friends for the high score! 🚀
 
 </div>
 
