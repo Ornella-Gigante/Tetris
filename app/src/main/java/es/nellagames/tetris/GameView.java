@@ -27,17 +27,31 @@ public class GameView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        paint.setColor(Color.LTGRAY);
         int cellSize = getWidth() / 10;
 
-        // Dibujar líneas horizontales
+        // Draw grid
+        paint.setColor(Color.LTGRAY);
         for (int i = 0; i <= 20; i++) {
             canvas.drawLine(0, i * cellSize, getWidth(), i * cellSize, paint);
         }
-
-        // Dibujar líneas verticales
         for (int i = 0; i <= 10; i++) {
             canvas.drawLine(i * cellSize, 0, i * cellSize, getHeight(), paint);
         }
+
+        // Draw current Tetromino
+        if (currentTetromino != null) {
+            int[][] shape = currentTetromino.getShape();
+            paint.setColor(Color.BLUE);
+            for (int r = 0; r < shape.length; r++) {
+                for (int c = 0; c < shape[r].length; c++) {
+                    if (shape[r][c] != 0) {
+                        int x = (currentTetromino.x + c) * cellSize;
+                        int y = (currentTetromino.y + r) * cellSize;
+                        canvas.drawRect(x, y, x + cellSize, y + cellSize, paint);
+                    }
+                }
+            }
+        }
     }
+
 }
