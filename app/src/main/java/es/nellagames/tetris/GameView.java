@@ -9,7 +9,7 @@ import android.view.View;
 
 public class GameView extends View {
     private final Paint paint = new Paint();
-
+    private final int FALL_DELAY = 500; // ms
     private final int[][] board = new int[20][10];
     private Tetromino currentTetromino;
 
@@ -52,6 +52,29 @@ public class GameView extends View {
                 }
             }
         }
+    }
+
+    private Runnable gameLoop = new Runnable() {
+        @Override
+        public void run() {
+            if (currentTetromino != null) {
+                currentTetromino.y++;
+                invalidate();
+                postDelayed(this, FALL_DELAY);
+            }
+        }
+    };
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        postDelayed(gameLoop, FALL_DELAY);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        removeCallbacks(gameLoop);
     }
 
 
