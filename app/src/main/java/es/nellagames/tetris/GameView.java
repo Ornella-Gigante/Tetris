@@ -65,6 +65,21 @@ public class GameView extends View {
         }
     };
 
+    public void moveLeft() {
+        currentTetromino.x--;
+        invalidate();
+    }
+
+    public void moveRight() {
+        currentTetromino.x++;
+        invalidate();
+    }
+
+    public void rotate() {
+        // Add simple rotation logic here
+        invalidate();
+    }
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
