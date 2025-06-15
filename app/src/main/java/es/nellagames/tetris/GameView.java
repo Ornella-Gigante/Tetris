@@ -12,6 +12,10 @@ public class GameView extends View {
     private final int FALL_DELAY = 500; // ms
     private final int[][] board = new int[20][10];
     private Tetromino currentTetromino;
+    private int score = 0;
+
+
+
 
     public GameView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -28,6 +32,11 @@ public class GameView extends View {
         super.onDraw(canvas);
 
         int cellSize = getWidth() / 10;
+
+        // Draw score in onDraw:
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(48);
+        canvas.drawText("Score: " + score, 20, 60, paint);
 
         // Draw grid
         paint.setColor(Color.LTGRAY);
@@ -80,6 +89,8 @@ public class GameView extends View {
         invalidate();
     }
 
+
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -91,6 +102,8 @@ public class GameView extends View {
         super.onDetachedFromWindow();
         removeCallbacks(gameLoop);
     }
+
+
 
 
 }
