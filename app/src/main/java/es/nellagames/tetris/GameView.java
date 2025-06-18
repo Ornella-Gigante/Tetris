@@ -22,6 +22,21 @@ public class GameView extends View {
         spawnTetromino(); // Llamar a spawnTetromino en el constructor una sola vez
     }
 
+    private boolean isPaused = false;
+
+    public void pauseGame() {
+        isPaused = true;
+        removeCallbacks(gameLoop);
+    }
+
+    public void resumeGame() {
+        if (isPaused) {
+            isPaused = false;
+            postDelayed(gameLoop, FALL_DELAY);
+        }
+    }
+
+
     private void spawnTetromino() {
         int type = (int) (Math.random() * Tetromino.SHAPES.length);
         currentTetromino = new Tetromino(type);
@@ -66,7 +81,7 @@ public class GameView extends View {
     private Runnable gameLoop = new Runnable() {
         @Override
         public void run() {
-            if (currentTetromino != null) {
+            if (!isPaused && currentTetromino != null) {
                 currentTetromino.y++;
                 invalidate();
                 postDelayed(this, FALL_DELAY);
