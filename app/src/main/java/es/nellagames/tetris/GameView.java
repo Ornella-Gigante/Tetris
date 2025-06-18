@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
 
 public class GameView extends View {
     private final Paint paint = new Paint();
@@ -14,17 +13,64 @@ public class GameView extends View {
     private final int[][] board = new int[20][10];
     private Tetromino currentTetromino;
     private int score = 0;
-
-
-
-
+    private boolean isPaused = false;
 
     public GameView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        spawnTetromino(); // Llamar a spawnTetromino en el constructor una sola vez
+        spawnTetromino(); // Inicializa la primera pieza
     }
 
-    private boolean isPaused = false;
+    public int getScore() {
+
+        return score;
+    }
+
+    public void restartGame() {
+        for (int r = 0; r < board.length; r++) {
+            for (int c = 0; c < board[r].length; c++) {
+                board[r][c] = 0;
+            }
+        }
+        score = 0;
+        spawnTetromino();
+        invalidate();
+        resumeGame();
+    }
+
+    public interface GameOverListener {
+        void onGameOver();
+    }
+
+    private GameOverListener gameOverListener;
+
+    public void setGameOverListener(GameOverListener listener) {
+        this.gameOverListener = listener;
+    }
+
+    private void checkGameOver() {
+        if (isGameOver() && gameOverListener != null) {
+            gameOverListener.onGameOver();
+        }
+    }
+
+    private boolean isGameOver() {
+        // Ejemplo simple: si la posición inicial está ocupada
+        int[][] shape = currentTetromino.getShape();
+        for (int r = 0; r < shape.length; r++) {
+            for (int c = 0; c < shape[r].length; c++) {
+                if (shape[r][c] != 0 && board[currentTetromino.y + r][currentTetromino.x + c] != 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void spawnTetromino() {
+        int type = (int) (Math.random() * Tetromino.SHAPES.length);
+        currentTetromino = new Tetromino(type);
+        checkGameOver();
+    }
 
     public void pauseGame() {
         isPaused = true;
@@ -38,24 +84,18 @@ public class GameView extends View {
         }
     }
 
-
-    private void spawnTetromino() {
-        int type = (int) (Math.random() * Tetromino.SHAPES.length);
-        currentTetromino = new Tetromino(type);
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
         int cellSize = getWidth() / 10;
 
-        // Draw score in onDraw:
+        // Dibuja la puntuación
         paint.setColor(Color.BLACK);
         paint.setTextSize(48);
         canvas.drawText("Score: " + score, 20, 60, paint);
 
-        // Draw grid
+        // Dibuja la cuadrícula
         paint.setColor(Color.LTGRAY);
         for (int i = 0; i <= 20; i++) {
             canvas.drawLine(0, i * cellSize, getWidth(), i * cellSize, paint);
@@ -64,7 +104,7 @@ public class GameView extends View {
             canvas.drawLine(i * cellSize, 0, i * cellSize, getHeight(), paint);
         }
 
-        // Draw current Tetromino
+        // Dibuja el tetrominó actual
         if (currentTetromino != null) {
             int[][] shape = currentTetromino.getShape();
             paint.setColor(Color.BLUE);
@@ -80,7 +120,7 @@ public class GameView extends View {
         }
     }
 
-    private Runnable gameLoop = new Runnable() {
+    private final Runnable gameLoop = new Runnable() {
         @Override
         public void run() {
             if (!isPaused && currentTetromino != null) {
@@ -102,11 +142,10 @@ public class GameView extends View {
     }
 
     public void rotate() {
-        // Add simple rotation logic here
+        // Aquí deberías añadir la lógica de rotación del tetrominó
+        // Por ejemplo: currentTetromino.rotate();
         invalidate();
     }
-
-
 
     @Override
     protected void onAttachedToWindow() {
@@ -120,9 +159,7 @@ public class GameView extends View {
         removeCallbacks(gameLoop);
     }
 
-
     public boolean isPaused() {
         return isPaused;
     }
-
 }
