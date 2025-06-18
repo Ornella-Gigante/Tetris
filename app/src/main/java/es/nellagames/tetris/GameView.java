@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
 
 public class GameView extends View {
     private final Paint paint = new Paint();
@@ -13,6 +14,7 @@ public class GameView extends View {
     private final int[][] board = new int[20][10];
     private Tetromino currentTetromino;
     private int score = 0;
+
 
 
 
@@ -119,6 +121,8 @@ public class GameView extends View {
     }
 
 
-
+    public boolean isPaused() {
+        return isPaused;
+    }
 
 }
