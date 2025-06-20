@@ -1,21 +1,57 @@
 package es.nellagames.tetris;
 
 public class Tetromino {
-    public static final int[][][] SHAPES = {
-            // I
-            {{1, 1, 1, 1}},
-            // J
-            {{1, 0, 0}, {1, 1, 1}},
-            // L
-            {{0, 0, 1}, {1, 1, 1}},
-            // O
-            {{1, 1}, {1, 1}},
-            // S
-            {{0, 1, 1}, {1, 1, 0}},
-            // T
-            {{0, 1, 0}, {1, 1, 1}},
-            // Z
-            {{1, 1, 0}, {0, 1, 1}}
+    // Matriz 3D que contiene todas las rotaciones de cada tetrominó
+    public static final int[][][][] SHAPES_ROTATIONS = {
+            // I-piece (4 rotaciones)
+            {
+                    {{0,0,0,0}, {1,1,1,1}, {0,0,0,0}, {0,0,0,0}},
+                    {{0,0,1,0}, {0,0,1,0}, {0,0,1,0}, {0,0,1,0}},
+                    {{0,0,0,0}, {0,0,0,0}, {1,1,1,1}, {0,0,0,0}},
+                    {{0,1,0,0}, {0,1,0,0}, {0,1,0,0}, {0,1,0,0}}
+            },
+            // J-piece (4 rotaciones)
+            {
+                    {{1,0,0}, {1,1,1}, {0,0,0}},
+                    {{0,1,1}, {0,1,0}, {0,1,0}},
+                    {{0,0,0}, {1,1,1}, {0,0,1}},
+                    {{0,1,0}, {0,1,0}, {1,1,0}}
+            },
+            // L-piece (4 rotaciones)
+            {
+                    {{0,0,1}, {1,1,1}, {0,0,0}},
+                    {{0,1,0}, {0,1,0}, {0,1,1}},
+                    {{0,0,0}, {1,1,1}, {1,0,0}},
+                    {{1,1,0}, {0,1,0}, {0,1,0}}
+            },
+            // O-piece (no necesita rotación)
+            {
+                    {{1,1}, {1,1}},
+                    {{1,1}, {1,1}},
+                    {{1,1}, {1,1}},
+                    {{1,1}, {1,1}}
+            },
+            // S-piece (2 rotaciones)
+            {
+                    {{0,1,1}, {1,1,0}, {0,0,0}},
+                    {{0,1,0}, {0,1,1}, {0,0,1}},
+                    {{0,0,0}, {0,1,1}, {1,1,0}},
+                    {{1,0,0}, {1,1,0}, {0,1,0}}
+            },
+            // T-piece (4 rotaciones)
+            {
+                    {{0,1,0}, {1,1,1}, {0,0,0}},
+                    {{0,1,0}, {0,1,1}, {0,1,0}},
+                    {{0,0,0}, {1,1,1}, {0,1,0}},
+                    {{0,1,0}, {1,1,0}, {0,1,0}}
+            },
+            // Z-piece (2 rotaciones)
+            {
+                    {{1,1,0}, {0,1,1}, {0,0,0}},
+                    {{0,0,1}, {0,1,1}, {0,1,0}},
+                    {{0,0,0}, {1,1,0}, {0,1,1}},
+                    {{0,1,0}, {1,1,0}, {1,0,0}}
+            }
     };
 
     public int type;
@@ -30,12 +66,14 @@ public class Tetromino {
     }
 
     public int[][] getShape() {
-        return SHAPES[type];
+        return SHAPES_ROTATIONS[type][rotation];
     }
 
     public void rotate() {
+        rotation = (rotation + 1) % SHAPES_ROTATIONS[type].length;
     }
 
     public void rotateBack() {
+        rotation = (rotation - 1 + SHAPES_ROTATIONS[type].length) % SHAPES_ROTATIONS[type].length;
     }
 }
