@@ -1,6 +1,6 @@
 package es.nellagames.tetris;
 
-import android.app.AlertDialog;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,13 +36,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         gameView.setGameOverListener(() -> runOnUiThread(() -> {
-            new AlertDialog.Builder(this)
-                    .setTitle("Game Over")
-                    .setMessage("Your score: " + gameView.getScore()) // Asegúrate de tener este método en GameView
-                    .setPositiveButton("Restart", (dialog, which) -> gameView.restartGame()) // Asegúrate de tener este método
-                    .setNegativeButton("Exit", (dialog, which) -> finish())
-                    .setCancelable(false)
-                    .show();
+            startActivity(new Intent(MainActivity.this, GameOverActivity.class));
+            finish();
         }));
 
         mediaPlayer = MediaPlayer.create(this, R.raw.tetris);

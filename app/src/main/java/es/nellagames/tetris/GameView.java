@@ -221,8 +221,6 @@ public class GameView extends View {
         }
     };
 
-// ... (resto del código sin cambios)
-
     private void fixTetromino() {
         int[][] shape = currentTetromino.getShape();
         for (int r = 0; r < shape.length; r++) {
