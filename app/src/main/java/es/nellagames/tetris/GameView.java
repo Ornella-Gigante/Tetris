@@ -1,6 +1,8 @@
 package es.nellagames.tetris;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -14,6 +16,21 @@ public class GameView extends View {
     private Tetromino currentTetromino;
     private int score = 0;
     private boolean isPaused = false;
+    private Bitmap[] tetrominoBitmaps;
+    private Bitmap backgroundBitmap;
+
+    private void loadBitmaps() {
+        tetrominoBitmaps = new Bitmap[] {
+                BitmapFactory.decodeResource(getResources(), R.drawable.tetromino_i),
+                BitmapFactory.decodeResource(getResources(), R.drawable.tetromino_j),
+                BitmapFactory.decodeResource(getResources(), R.drawable.tetromino_l),
+                BitmapFactory.decodeResource(getResources(), R.drawable.tetromino_o),
+                BitmapFactory.decodeResource(getResources(), R.drawable.tetromino_s),
+                BitmapFactory.decodeResource(getResources(), R.drawable.tetromino_t),
+                BitmapFactory.decodeResource(getResources(), R.drawable.tetromino_z)
+        };
+        backgroundBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+    }
 
     public GameView(Context context, AttributeSet attrs) {
         super(context, attrs);
