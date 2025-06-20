@@ -183,7 +183,9 @@ public class GameView extends View {
         }
     }
 
-    // Game loop simplificado - UNA PIEZA A LA VEZ
+    // ... (código anterior sin cambios)
+
+    // Game loop corregido - UNA PIEZA A LA VEZ
     private final Runnable gameLoop = new Runnable() {
         @Override
         public void run() {
@@ -198,24 +200,28 @@ public class GameView extends View {
 
                     // Fijar la pieza al tablero
                     fixTetromino();
-
-                    // Limpiar líneas completas
                     clearLines();
 
-                    // Crear nueva pieza
-                    spawnTetromino();
-                }
+                    // ESPERAR antes de generar nueva pieza
+                    postDelayed(() -> {
+                        spawnTetromino();
+                        invalidate();
 
-                // Actualizar la pantalla
-                invalidate();
-
-                // Continuar el loop SOLO si no es game over
-                if (!isGameOver && !isPaused) {
+                        // Continuar el game loop solo si no es game over
+                        if (!isGameOver && !isPaused) {
+                            postDelayed(this, FALL_DELAY);
+                        }
+                    }, 300); // Espera 300ms antes de nueva pieza
+                } else {
+                    // Continuar cayendo
+                    invalidate();
                     postDelayed(this, FALL_DELAY);
                 }
             }
         }
     };
+
+// ... (resto del código sin cambios)
 
     private void fixTetromino() {
         int[][] shape = currentTetromino.getShape();
