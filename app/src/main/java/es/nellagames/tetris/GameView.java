@@ -107,6 +107,13 @@ public class GameView extends View {
 
         int cellSize = getWidth() / 10;
 
+        if (backgroundBitmap != null) {
+            canvas.drawBitmap(
+                    Bitmap.createScaledBitmap(backgroundBitmap, getWidth(), getHeight(), true),
+                    0, 0, null
+            );
+        }
+
         // Dibuja la puntuación
         paint.setColor(Color.BLACK);
         paint.setTextSize(48);
