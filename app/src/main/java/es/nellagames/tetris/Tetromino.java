@@ -32,4 +32,10 @@ public class Tetromino {
     public int[][] getShape() {
         return SHAPES[type];
     }
+
+    public void rotate() {
+    }
+
+    public void rotateBack() {
+    }
 }

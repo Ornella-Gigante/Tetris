@@ -281,11 +281,40 @@ public class GameView extends View {
     }
 
     public void rotate() {
-        // Aquí deberías añadir la lógica de rotación del tetrominó
-        // Por ejemplo: currentTetromino.rotate();
-        invalidate();
+        if (currentTetromino != null) {
+            currentTetromino.rotate();
+            // Verificar colisión después de rotar
+            if (checkCollision()) {
+                // Si hay colisión, deshacer la rotación
+                currentTetromino.rotateBack();
+            }
+            invalidate();
+        }
     }
 
+    private boolean checkCollision() {
+        int[][] shape = currentTetromino.getShape();
+        for (int r = 0; r < shape.length; r++) {
+            for (int c = 0; c < shape[r].length; c++) {
+                if (shape[r][c] != 0) {
+                    int boardX = currentTetromino.x + c;
+                    int boardY = currentTetromino.y + r;
+
+                    // Verificar límites del tablero
+                    if (boardX < 0 || boardX >= board[0].length ||
+                            boardY >= board.length) {
+                        return true;
+                    }
+
+                    // Verificar colisión con bloques existentes
+                    if (boardY >= 0 && board[boardY][boardX] != -1) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
