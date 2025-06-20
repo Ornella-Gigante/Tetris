@@ -128,20 +128,23 @@ public class GameView extends View {
             canvas.drawLine(i * cellSize, 0, i * cellSize, getHeight(), paint);
         }
 
-        // Dibuja el tetrominó actual
         if (currentTetromino != null) {
             int[][] shape = currentTetromino.getShape();
-            paint.setColor(Color.BLUE);
+            Bitmap tetroBitmap = tetrominoBitmaps[currentTetromino.type];
             for (int r = 0; r < shape.length; r++) {
                 for (int c = 0; c < shape[r].length; c++) {
                     if (shape[r][c] != 0) {
                         int x = (currentTetromino.x + c) * cellSize;
                         int y = (currentTetromino.y + r) * cellSize;
-                        canvas.drawRect(x, y, x + cellSize, y + cellSize, paint);
+                        canvas.drawBitmap(
+                                Bitmap.createScaledBitmap(tetroBitmap, cellSize, cellSize, true),
+                                x, y, null
+                        );
                     }
                 }
             }
         }
+
     }
 
     private final Runnable gameLoop = new Runnable() {
