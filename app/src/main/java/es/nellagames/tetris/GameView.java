@@ -19,8 +19,14 @@ public class GameView extends View {
     private Bitmap[] tetrominoBitmaps;
     private Bitmap backgroundBitmap;
 
+    public GameView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        loadBitmaps();
+        spawnTetromino();
+    }
+
     private void loadBitmaps() {
-        tetrominoBitmaps = new Bitmap[] {
+        tetrominoBitmaps = new Bitmap[]{
                 BitmapFactory.decodeResource(getResources(), R.drawable.tetromino_i),
                 BitmapFactory.decodeResource(getResources(), R.drawable.tetromino_j),
                 BitmapFactory.decodeResource(getResources(), R.drawable.tetromino_l),
@@ -32,13 +38,7 @@ public class GameView extends View {
         backgroundBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
     }
 
-    public GameView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        spawnTetromino(); // Inicializa la primera pieza
-    }
-
     public int getScore() {
-
         return score;
     }
 
@@ -107,6 +107,7 @@ public class GameView extends View {
 
         int cellSize = getWidth() / 10;
 
+        // Dibuja el fondo
         if (backgroundBitmap != null) {
             canvas.drawBitmap(
                     Bitmap.createScaledBitmap(backgroundBitmap, getWidth(), getHeight(), true),
@@ -128,6 +129,23 @@ public class GameView extends View {
             canvas.drawLine(i * cellSize, 0, i * cellSize, getHeight(), paint);
         }
 
+        // Dibuja los bloques ya colocados en el tablero
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[row].length; col++) {
+                int type = board[row][col];
+                if (type >= 0) {
+                    Bitmap blockBitmap = tetrominoBitmaps[type];
+                    int x = col * cellSize;
+                    int y = row * cellSize;
+                    canvas.drawBitmap(
+                            Bitmap.createScaledBitmap(blockBitmap, cellSize, cellSize, true),
+                            x, y, null
+                    );
+                }
+            }
+        }
+
+        // Dibuja el tetrominó actual
         if (currentTetromino != null) {
             int[][] shape = currentTetromino.getShape();
             Bitmap tetroBitmap = tetrominoBitmaps[currentTetromino.type];
@@ -144,7 +162,6 @@ public class GameView extends View {
                 }
             }
         }
-
     }
 
     private final Runnable gameLoop = new Runnable() {
