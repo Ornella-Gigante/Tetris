@@ -23,7 +23,7 @@ public class GameOverActivity extends AppCompatActivity {
             finish();
 
             // Iniciar música de fondo
-            MediaPlayer.create(this, R.raw.tetris);
+            MediaPlayer.create(this, R.raw.gameover);
             mediaPlayer.setLooping(true);
             mediaPlayer.start();
         });
