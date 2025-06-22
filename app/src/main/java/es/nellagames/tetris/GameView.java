@@ -11,21 +11,25 @@ import android.view.View;
 
 public class GameView extends View {
     private final Paint paint = new Paint();
-    private final int FALL_DELAY = 1000; // ms - Velocidad más lenta
+    private final int FALL_DELAY = 1000; // ms
     private final int[][] board = new int[20][10];
     private Tetromino currentTetromino;
     private int score = 0;
     private boolean isPaused = false;
     private boolean isGameOver = false;
+
+    // Efecto de fuego animado
     private boolean isFxClean09Active = false;
     private int fxClean09Line = -1;
     private int fxClean09FrameCount = 0;
-    private final int FX_CLEAN09_DURATION = 20; // frames
+    private final int FX_CLEAN09_DURATION = 30; // frames para la animación
+    private int fxClean09Position = 0;
+    private boolean fxClean09DirectionRight = true;
 
     private Bitmap[] tetrominoStyle1Bitmaps;
     private Bitmap[] tetrominoBlockBitmaps;
     private Bitmap backgroundBitmap;
-    private Bitmap[] effectsBitmaps;
+    private Bitmap fxClean09Bitmap;
 
     public GameView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -66,11 +70,8 @@ public class GameView extends View {
 
         backgroundBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
 
-        effectsBitmaps = new Bitmap[]{
-                BitmapFactory.decodeResource(getResources(), R.drawable.fx_clean01),
-                BitmapFactory.decodeResource(getResources(), R.drawable.fx_clean02),
-                BitmapFactory.decodeResource(getResources(), R.drawable.fx_clean09),
-        };
+        // Solo cargamos fx_clean09 para la animación de fuego
+        fxClean09Bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.fx_clean09);
     }
 
     public int getScore() {
@@ -193,14 +194,21 @@ public class GameView extends View {
             }
         }
 
-        // Dibuja el efecto fx_clean09 si está activo
+        // Dibuja el efecto fx_clean09 animado
         if (isFxClean09Active && fxClean09Line >= 0) {
-            Bitmap effectBitmap = effectsBitmaps[2]; // fx_clean09 está en índice 2
-            for (int col = 0; col < 10; col++) {
-                int x = gameAreaMargin + (col * cellSize);
-                int y = gameAreaTop + (fxClean09Line * cellSize);
-                canvas.drawBitmap(Bitmap.createScaledBitmap(effectBitmap, cellSize, cellSize, true), x, y, null);
+            int x = gameAreaMargin + (fxClean09Position * cellSize);
+            int y = gameAreaTop + (fxClean09Line * cellSize);
+            canvas.drawBitmap(Bitmap.createScaledBitmap(fxClean09Bitmap, cellSize, cellSize, true), x, y, null);
+
+            // Actualizar posición para el siguiente frame
+            if (fxClean09DirectionRight) {
+                fxClean09Position++;
+                if (fxClean09Position >= 9) fxClean09DirectionRight = false;
+            } else {
+                fxClean09Position--;
+                if (fxClean09Position <= 0) fxClean09DirectionRight = true;
             }
+
             fxClean09FrameCount++;
             if (fxClean09FrameCount > FX_CLEAN09_DURATION) {
                 isFxClean09Active = false;
@@ -264,10 +272,14 @@ public class GameView extends View {
             }
 
             if (fullLine) {
+                // Activar efecto de fuego animado
                 isFxClean09Active = true;
                 fxClean09Line = row;
                 fxClean09FrameCount = 0;
+                fxClean09Position = 0;
+                fxClean09DirectionRight = true;
 
+                // Mover líneas hacia abajo
                 for (int moveRow = row; moveRow > 0; moveRow--) {
                     for (int col = 0; col < board[moveRow].length; col++) {
                         board[moveRow][col] = board[moveRow - 1][col];
