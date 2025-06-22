@@ -17,10 +17,15 @@ public class GameView extends View {
     private int score = 0;
     private boolean isPaused = false;
     private boolean isGameOver = false;
+    private boolean isFxClean09Active = false;
+    private int fxClean09Line = -1;
+    private int fxClean09FrameCount = 0;
+    private final int FX_CLEAN09_DURATION = 20; // frames
 
     private Bitmap[] tetrominoStyle1Bitmaps;
     private Bitmap[] tetrominoBlockBitmaps;
     private Bitmap backgroundBitmap;
+    private Bitmap[] effectsBitmaps;
 
     public GameView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -60,6 +65,12 @@ public class GameView extends View {
         };
 
         backgroundBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+
+        effectsBitmaps = new Bitmap[]{
+                BitmapFactory.decodeResource(getResources(), R.drawable.fx_clean01),
+                BitmapFactory.decodeResource(getResources(), R.drawable.fx_clean02),
+                BitmapFactory.decodeResource(getResources(), R.drawable.fx_clean09),
+        };
     }
 
     public int getScore() {
@@ -181,39 +192,43 @@ public class GameView extends View {
                 }
             }
         }
+
+        // Dibuja el efecto fx_clean09 si está activo
+        if (isFxClean09Active && fxClean09Line >= 0) {
+            Bitmap effectBitmap = effectsBitmaps[2]; // fx_clean09 está en índice 2
+            for (int col = 0; col < 10; col++) {
+                int x = gameAreaMargin + (col * cellSize);
+                int y = gameAreaTop + (fxClean09Line * cellSize);
+                canvas.drawBitmap(Bitmap.createScaledBitmap(effectBitmap, cellSize, cellSize, true), x, y, null);
+            }
+            fxClean09FrameCount++;
+            if (fxClean09FrameCount > FX_CLEAN09_DURATION) {
+                isFxClean09Active = false;
+                fxClean09Line = -1;
+            } else {
+                postInvalidateOnAnimation();
+            }
+        }
     }
 
-    // ... (código anterior sin cambios)
-
-    // Game loop corregido - UNA PIEZA A LA VEZ
     private final Runnable gameLoop = new Runnable() {
         @Override
         public void run() {
             if (!isPaused && !isGameOver && currentTetromino != null) {
-                // Mover la pieza hacia abajo
                 currentTetromino.y++;
 
-                // Verificar si hay colisión
                 if (checkCollision()) {
-                    // Retroceder la pieza
                     currentTetromino.y--;
-
-                    // Fijar la pieza al tablero
                     fixTetromino();
                     clearLines();
-
-                    // ESPERAR antes de generar nueva pieza
                     postDelayed(() -> {
                         spawnTetromino();
                         invalidate();
-
-                        // Continuar el game loop solo si no es game over
                         if (!isGameOver && !isPaused) {
                             postDelayed(this, FALL_DELAY);
                         }
-                    }, 300); // Espera 300ms antes de nueva pieza
+                    }, 300);
                 } else {
-                    // Continuar cayendo
                     invalidate();
                     postDelayed(this, FALL_DELAY);
                 }
@@ -249,7 +264,10 @@ public class GameView extends View {
             }
 
             if (fullLine) {
-                // Mover todas las líneas hacia abajo
+                isFxClean09Active = true;
+                fxClean09Line = row;
+                fxClean09FrameCount = 0;
+
                 for (int moveRow = row; moveRow > 0; moveRow--) {
                     for (int col = 0; col < board[moveRow].length; col++) {
                         board[moveRow][col] = board[moveRow - 1][col];
@@ -260,7 +278,7 @@ public class GameView extends View {
                     board[0][col] = -1;
                 }
                 linesCleared++;
-                row++; // Verificar la misma fila nuevamente
+                row++; // Revisar la misma fila otra vez
             }
         }
 
@@ -273,7 +291,7 @@ public class GameView extends View {
         if (currentTetromino != null && !isGameOver && !isPaused) {
             currentTetromino.x--;
             if (checkCollision()) {
-                currentTetromino.x++; // Revertir
+                currentTetromino.x++;
             }
             invalidate();
         }
@@ -283,7 +301,7 @@ public class GameView extends View {
         if (currentTetromino != null && !isGameOver && !isPaused) {
             currentTetromino.x++;
             if (checkCollision()) {
-                currentTetromino.x--; // Revertir
+                currentTetromino.x--;
             }
             invalidate();
         }
@@ -309,12 +327,10 @@ public class GameView extends View {
                     int boardX = currentTetromino.x + c;
                     int boardY = currentTetromino.y + r;
 
-                    // Verificar límites
                     if (boardX < 0 || boardX >= board[0].length || boardY >= board.length) {
                         return true;
                     }
 
-                    // Verificar colisión con bloques existentes
                     if (boardY >= 0 && board[boardY][boardX] != -1) {
                         return true;
                     }
