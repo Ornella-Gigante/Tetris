@@ -105,8 +105,8 @@ Enjoy classic gameplay, catchy music, colorful visuals, and challenge your frien
 ## 🎥 Demo
 
 <p align="center">
-  <a href="https://vimeo.com/1081564940/03ad71e624" title="MelodyKeys Demo">
-    <img src="https://github.com/Ornella-Gigante/MelodyKeys/blob/main/image_1.png?raw=true" alt="MelodyKeys Demo" width="400">
+  <a href="https://vimeo.com/1095377996/607ccd4d05" title="MelodyKeys Demo">
+    <img src="https://github.com/Ornella-Gigante/Tetris/blob/main/demo_image2.png" alt="Tetris Demo" width="400">
   </a>
 </p>
 
