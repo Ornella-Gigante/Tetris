@@ -25,7 +25,7 @@ public class GameOverActivity extends AppCompatActivity {
                 mediaPlayer.release();
                 mediaPlayer = null;
             }
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, StartActivity.class));
             finish();
         });
     }
