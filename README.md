@@ -23,6 +23,8 @@
   </a>
 </p>
 
+
+
 </div>
 
 ---
@@ -30,7 +32,12 @@
 ## 🖼️ Preview
 
  <p align="center">
-      <img src="https://github.com/Ornella-Gigante/tetris/blob/main/demo_image.png" width="600" alt="Gameplay Screenshot">
+      <img src="https://github.com/Ornella-Gigante/tetris/blob/main/demo_image.png" width="300" alt="Gameplay Screenshot">
+    
+  </p>
+
+   <p align="center">
+      <img src="https://github.com/Ornella-Gigante/tetris/blob/main/demo_image2.png" width="300" alt="Gameplay Screenshot">
     
   </p>
 
