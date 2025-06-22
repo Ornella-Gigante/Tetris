@@ -85,23 +85,21 @@ text
 
 ## 🗂️ Project Structure
 
-tetris-android/
-├── app/
-│ ├── src/
-│ │ ├── main/
-│ │ │ ├── java/es/nellagames/tetris/
-│ │ │ ├── res/
-│ │ │ │ ├── layout/
-│ │ │ │ ├── drawable/
-│ │ │ │ ├── values/
-│ │ │ │ └── raw/
-│ │ │ └── AndroidManifest.xml
-│ └── build.gradle
-├── screenshots/
-├── README.md
-└── LICENSE
-
-text
+    tetris-android/
+    ├── app/
+    │ ├── src/
+    │ │ ├── main/
+    │ │ │ ├── java/es/nellagames/tetris/
+    │ │ │ ├── res/
+    │ │ │ │ ├── layout/
+    │ │ │ │ ├── drawable/
+    │ │ │ │ ├── values/
+    │ │ │ │ └── raw/
+    │ │ │ └── AndroidManifest.xml
+    │ └── build.gradle
+    ├── screenshots/
+    ├── README.md
+    └── LICENSE
 
 ---
 
