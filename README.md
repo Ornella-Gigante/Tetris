@@ -68,18 +68,17 @@ Enjoy classic gameplay, catchy music, colorful visuals, and challenge your frien
 
 ### Prerequisites
 
-- [Android Studio](https://developer.android.com/studio) (latest recommended)
-- Java 8 or higher
-- Android device or emulator
+    - [Android Studio](https://developer.android.com/studio) (latest recommended)
+    - Java 8 or higher
+    - Android device or emulator
 
 ### Installation
 
-git clone https://github.com/yourusername/tetris-android.git
-cd tetris-android
-
-text
-1. Open the project in Android Studio.
-2. Build & Run on your device or emulator.
+    git clone https://github.com/yourusername/tetris-android.git
+    cd tetris-android
+    
+    1. Open the project in Android Studio.
+    2. Build & Run on your device or emulator.
 
 ---
 
