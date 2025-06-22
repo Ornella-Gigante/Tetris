@@ -5,21 +5,17 @@
     android:background="@drawable/tetris">
 
     <Button
-        android:id="@+id/btnStartGame"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
+        android:id="@+id/button2"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="583dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="95dp"
+        android:layout_marginStart="137dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginBottom="143dp"
         android:background="@drawable/button_start"
-        android:text="START GAME"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp" />
+        android:text="START" />
 
 
 </RelativeLayout>

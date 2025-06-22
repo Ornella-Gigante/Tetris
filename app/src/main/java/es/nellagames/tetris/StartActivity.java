@@ -25,7 +25,7 @@ public class StartActivity extends AppCompatActivity {
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
-        findViewById(R.id.btnStartGame).setOnClickListener(v -> {
+        findViewById(R.id.button2).setOnClickListener(v -> {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         });
