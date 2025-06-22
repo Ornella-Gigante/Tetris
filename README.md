@@ -16,8 +16,8 @@ Enjoy classic gameplay, catchy music, colorful visuals, and challenge your frien
 ## 🖼️ Preview
 
 <div align="center">
-  <img src="https://github.com/Ornella-Gigante/tetris/blob/main/demo_image.png" width="220" alt="Gameplay Screenshot" style="display:inline-block; margin-right: 18px;"/>
-  <img src="https://github.com/Ornella-Gigante/tetris/blob/main/demo_image2.png" width="220" alt="Start Screen Screenshot" style="display:inline-block; margin-left: 18px;"/>
+  <img src="https://github.com/Ornella-Gigante/tetris/blob/main/demo_image.png" width="300" alt="Gameplay Screenshot" style="display:inline-block; margin-right: 18px;"/>
+  <img src="https://github.com/Ornella-Gigante/tetris/blob/main/demo_image2.png" width="300" alt="Start Screen Screenshot" style="display:inline-block; margin-left: 18px;"/>
 </div>
 
 ---
@@ -134,11 +134,5 @@ Clone, build, and play **TetriX: Block Drop Beats** now! 🎉
 
 ---
 
-<details>
-  <summary>🔍 Extra Tips</summary>
 
-  - **Personalize your README** with GIFs, more badges, or links to demo videos.
-  - **Share your high scores** and challenge your friends!
-
-</details>
 
