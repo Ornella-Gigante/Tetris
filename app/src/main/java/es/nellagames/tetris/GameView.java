@@ -17,6 +17,14 @@ public class GameView extends View {
     private int score = 0;
     private boolean isPaused = false;
     private boolean isGameOver = false;
+    private int fallDelay = 1000; // ms, velocidad inicial
+    private final int MIN_FALL_DELAY = 200; // ms, velocidad mínima
+    private final int SPEED_INCREASE_INTERVAL = 30; // segundos o líneas limpiadas para aumentar velocidad
+    private final int SPEED_INCREASE_AMOUNT = 50; // ms menos cada intervalo
+
+    private int elapsedTimeSeconds = 0; // Tiempo transcurrido en segundos
+    private int linesCleared = 0; // Líneas limpiadas
+
 
     // Efecto de fuego animado
     private boolean isFxClean09Active = false;
@@ -46,6 +54,16 @@ public class GameView extends View {
             }
         }
     }
+
+    private int updateFallDelay() {
+        int intervals = (elapsedTimeSeconds / SPEED_INCREASE_INTERVAL) + (linesCleared / 10);
+        int newDelay = fallDelay - (intervals * SPEED_INCREASE_AMOUNT);
+        if (newDelay < MIN_FALL_DELAY) {
+            newDelay = MIN_FALL_DELAY;
+        }
+        return newDelay;
+    }
+
 
     private void loadAllBitmaps() {
         tetrominoStyle1Bitmaps = new Bitmap[]{
@@ -261,7 +279,7 @@ public class GameView extends View {
     }
 
     private void clearLines() {
-        int linesCleared = 0;
+        int linesClearedThisTime = 0;
         for (int row = board.length - 1; row >= 0; row--) {
             boolean fullLine = true;
             for (int col = 0; col < board[row].length; col++) {
@@ -289,13 +307,14 @@ public class GameView extends View {
                 for (int col = 0; col < board[0].length; col++) {
                     board[0][col] = -1;
                 }
-                linesCleared++;
+                linesClearedThisTime++;
                 row++; // Revisar la misma fila otra vez
             }
         }
 
-        if (linesCleared > 0) {
-            score += linesCleared * 100;
+        if (linesClearedThisTime > 0) {
+            linesCleared += linesClearedThisTime;
+            score += linesClearedThisTime * 100;
         }
     }
 
