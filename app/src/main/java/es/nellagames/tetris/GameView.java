@@ -21,6 +21,8 @@ public class GameView extends View {
     private final int MIN_FALL_DELAY = 200; // ms, velocidad mínima
     private final int SPEED_INCREASE_INTERVAL = 30; // segundos o líneas limpiadas para aumentar velocidad
     private final int SPEED_INCREASE_AMOUNT = 50; // ms menos cada intervalo
+    private long lastTimeUpdate = System.currentTimeMillis();
+
 
     private int elapsedTimeSeconds = 0; // Tiempo transcurrido en segundos
     private int linesCleared = 0; // Líneas limpiadas
@@ -241,8 +243,15 @@ public class GameView extends View {
         @Override
         public void run() {
             if (!isPaused && !isGameOver && currentTetromino != null) {
-                currentTetromino.y++;
+                // Cada 1000ms (1 segundo) incrementa elapsedTimeSeconds
 
+                if (System.currentTimeMillis() - lastTimeUpdate > 1000) {
+                    elapsedTimeSeconds++;
+                    lastTimeUpdate = System.currentTimeMillis();
+                }
+                fallDelay = updateFallDelay();
+
+                currentTetromino.y++;
                 if (checkCollision()) {
                     currentTetromino.y--;
                     fixTetromino();
@@ -251,16 +260,17 @@ public class GameView extends View {
                         spawnTetromino();
                         invalidate();
                         if (!isGameOver && !isPaused) {
-                            postDelayed(this, FALL_DELAY);
+                            postDelayed(this, fallDelay);
                         }
                     }, 300);
                 } else {
                     invalidate();
-                    postDelayed(this, FALL_DELAY);
+                    postDelayed(this, fallDelay);
                 }
             }
         }
     };
+
 
     private void fixTetromino() {
         int[][] shape = currentTetromino.getShape();
