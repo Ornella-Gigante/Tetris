@@ -18,9 +18,9 @@ public class GameView extends View {
     private boolean isPaused = false;
     private boolean isGameOver = false;
     private int fallDelay = 1000; // ms, velocidad inicial
-    private final int MIN_FALL_DELAY = 200; // ms, velocidad mínima
-    private final int SPEED_INCREASE_INTERVAL = 30; // segundos o líneas limpiadas para aumentar velocidad
-    private final int SPEED_INCREASE_AMOUNT = 50; // ms menos cada intervalo
+    private final int MIN_FALL_DELAY = 300; // ms, velocidad mínima
+    private final int SPEED_INCREASE_INTERVAL = 5; // segundos o líneas limpiadas para aumentar velocidad
+    private final int SPEED_INCREASE_AMOUNT = 40; // ms menos cada intervalo
     private long lastTimeUpdate = System.currentTimeMillis();
 
 
@@ -58,8 +58,8 @@ public class GameView extends View {
     }
 
     private int updateFallDelay() {
-        int intervals = (elapsedTimeSeconds / SPEED_INCREASE_INTERVAL) + (linesCleared / 10);
-        int newDelay = fallDelay - (intervals * SPEED_INCREASE_AMOUNT);
+        int intervals = linesCleared / SPEED_INCREASE_INTERVAL;
+        int newDelay = 1000 - (intervals * SPEED_INCREASE_AMOUNT);
         if (newDelay < MIN_FALL_DELAY) {
             newDelay = MIN_FALL_DELAY;
         }
@@ -325,8 +325,10 @@ public class GameView extends View {
         if (linesClearedThisTime > 0) {
             linesCleared += linesClearedThisTime;
             score += linesClearedThisTime * 100;
+            fallDelay = updateFallDelay(); // Actualizar la velocidad
         }
     }
+
 
     public void moveLeft() {
         if (currentTetromino != null && !isGameOver && !isPaused) {
